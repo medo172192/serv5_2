@@ -89,19 +89,10 @@ $(function (){
             // links
             resp.links.map((res,index)=>{
                 if (res.url == null){
-                    console.log(res.url);
-                   if (index==0){
-                        $('.pagination').append(`
-                        <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${page+1}">${res.label}</a></li>
-                    `);
-                   }else{
-                        $('.pagination').append(`
-                            <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${page-1}">${res.label}</a></li>
-                        `);
-                   }
+                    
                 }else{
                     $('.pagination').append(`
-                        <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.label}">${res.label}</a></li>
+                        <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.url.split('=')[1]}">${res.label}</a></li>
                     `);
 
                 }
