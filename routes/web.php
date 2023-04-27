@@ -26,5 +26,8 @@ Route::middleware('auth')->group(function (){
     Route::post('/create/new/product', [App\Http\Controllers\ProductController::class, 'create']);
     Route::get('/show/products', [App\Http\Controllers\ProductController::class, 'show']);
     Route::post('/show/products', [App\Http\Controllers\ProductController::class, 'showProducts']);
+    Route::get('/show/all/product', [App\Http\Controllers\ProController::class, 'showAll']);
+    Route::get('/get/all/product', [App\Http\Controllers\ProController::class, 'getAll']);
+    Route::get('/get/categories', [App\Http\Controllers\ProController::class, 'getCategories']);
 });
 

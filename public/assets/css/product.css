@@ -1,0 +1,20 @@
+body{
+    background:rgb(231, 231, 231);
+}
+.side-bar{
+    position: fixed;
+    background:white;
+}
+
+.content{
+    float:right;
+    width:74%;
+    position: relative;
+    padding:20px
+        
+}
+.paginationlink{
+    position: fixed;
+    bottom: 10px;
+    width:75%;
+}
