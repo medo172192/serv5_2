@@ -10,6 +10,7 @@ $(function (){
     }else{
         page = '?page=1';
     }
+    console.log(page);
     $.ajax({
         url:`/get/all/product${page}`,
         dataType:'json',
@@ -21,21 +22,25 @@ $(function (){
             let resp = JSON.parse(JSON.stringify(ress)).response;
             // links
             resp.links.map((res,index)=>{
-                if (index ===0){
-                    if (res.url == null){
-                        $('.pagination').append(`
-                        <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${search[search.length-1]}">${res.label}</a></li>
-                     `);
-                    }else{
-                        $('.pagination').append(`
-                        <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.url}">${res.label}</a></li>
-                     `);
+                if (res.url == null){
+                   if (index==0){
+                    console.log(res.url);
 
-                    }
-                } 
-                $('.pagination').append(`
-                <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.label}">${res.label}</a></li>
-            `);
+                        $('.pagination').append(`
+                        <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=2">${res.label}</a></li>
+                    `);
+                   }else{
+                        $('.pagination').append(`
+                            <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=2">${res.label}</a></li>
+                        `);
+                   }
+                }else{
+                    $('.pagination').append(`
+                        <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.label}">${res.label}</a></li>
+                    `);
+
+                }
+              
                
             });
 
@@ -93,22 +98,23 @@ $(function (){
                 console.log(ress);
             // links
             resp.links.map((res,index)=>{
-                if (index ===0){
-                    if (res.url == null){
+                if (res.url == null){
+                    console.log(res.url);
+                   if (index==0){
                         $('.pagination').append(`
-                        <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${search[search.length-1]}">${res.label}</a></li>
-                     `);
-                    }else{
+                        <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${page+1}">${res.label}</a></li>
+                    `);
+                   }else{
                         $('.pagination').append(`
-                        <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.url}">${res.label}</a></li>
-                     `);
+                            <li disabled onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${page-1}">${res.label}</a></li>
+                        `);
+                   }
+                }else{
+                    $('.pagination').append(`
+                        <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.label}">${res.label}</a></li>
+                    `);
 
-                    }
-                } 
-                $('.pagination').append(`
-                <li onclick="sentAjax()" class="page-item"><a class="page-link" href="/show/all/product?page=${res.label}">${res.label}</a></li>
-            `);
-               
+                }
             });
 
 
