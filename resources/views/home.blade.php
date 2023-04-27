@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    <a href="/create/product">create product</a>
+                    <a href="/show/products">manage products</a>
+                    <a href="/show/all/product">senior</a>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
